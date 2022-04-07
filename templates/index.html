@@ -18,6 +18,11 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/socicon/css/styles.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/theme/css/style.css') }}">
 
+
+  <link rel="stylesheet" type = "text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
@@ -31,82 +36,80 @@
 </head>
 <body>
   
-  <section class="menu cid-s48OLK6784" once="menu" id="menu1-h">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="https://mobiri.se">
-                        <img src="assets/images/0-144x144.png" alt="Mobirise" style="height: 4.6rem;">
-                    </a>
-                </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-info display-5" href="">IMAGE SUPER RESOLUTION</a></span>
-            </div>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-info display-4" href="">Menu Item 1</a></li></ul>
-                
-                
-            </div>
-        </div>
-    </nav>
-
-</section>
-
-<section class="header1 cid-s48MCQYojq mbr-fullscreen" id="header1-f">
-    <div class="align-center container">
-        <div class="row justify-content-center">
-            
-            <div class="col-12 col-lg-10">
-                <div class="drag-area" id="image">
-                    
-                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <header>Drag & Drop to Upload File</header>
-                    <button>Browse File</button>
-                    <input name="file" type="file" hidden>
-                </div>
-                
-                
-                <p class="mbr-text mbr-fonts-style display-7"></p>
-                <div class = "output-area">
-                    <div class="mbr-section-btn mt-3" >
-                    <button class="btn btn-success display-4" >Super Resolve!</button>
-                </div>
-            </div>   
-            </div>
-        
-        </div>
-    </div>
-</section>
-
-<section class="header1 cid-s48MCQYojq mbr-fullscreen" id="header1-f">
-    <div class="align-center container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-
-                    
-                    <script src="{{ url_for('static', filename='assets/dragdrop/imagescript.js') }}"></script>
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="footer7 cid-t0kyloJNMY" once="footers" id="footer7-k">
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7">
-                    Created by-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-</body>
-</html>
+    <section class="menu cid-s48OLK6784" once="menu" id="menu1-h">
+      
+      <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+          <div class="container-fluid">
+              <div class="navbar-brand">
+                  <span class="navbar-logo">
+                      <a href="https://mobiri.se">
+                          <img src="{{ url_for('static', filename='assets/images/0-144x144.png') }}" alt="Mobirise" style="height: 4.6rem;">
+                      </a>
+                  </span>
+                  <span class="navbar-caption-wrap"><a class="navbar-caption text-info display-5" href="">IMAGE SUPER RESOLUTION</a></span>
+              </div>
+              
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-info display-4" href="">Menu Item 1</a></li></ul>
+              </div>
+          </div>
+      </nav>
+  
+  </section>
+  
+  <section class="header1 cid-s48MCQYojq mbr-fullscreen" id="header1-f">
+      <div class="align-center container">
+          <div class="row justify-content-center">
+              
+              <div class="col-12 col-lg-10">
+                  <div class="drag-area" id="image">
+                      
+                      <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                      <header>Drag & Drop to Upload File</header>
+                      <button>Browse File</button>
+                      <input name="file" type="file" hidden>
+                  </div>
+                  
+                  
+                  <p class="mbr-text mbr-fonts-style display-7"></p>
+                  <div class = "output-area">
+                      <div class="mbr-section-btn mt-3" >
+                      <button class="btn btn-success display-4" >Super Resolve!</button>
+                  </div>
+              </div>   
+              </div>
+          
+          </div>
+      </div>
+  </section>
+  
+  <section class="header1 cid-s48MCQYojq mbr-fullscreen" id="header1-f">
+      <div class="align-center container">
+          <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                  <div class="image-wrapper">
+  
+                      
+                      <script src="{{ url_for('static', filename='assets/dragdrop/imagescript.js') }}"></script>
+                      <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+  
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <section class="footer7 cid-t0kyloJNMY" once="footers" id="footer7-k">
+      <div class="container">
+          <div class="media-container-row align-center mbr-white">
+              <div class="col-12">
+                  <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                      Created by-
+                  </p>
+              </div>
+          </div>
+      </div>
+  </section>
+  </body>
+  </html>
