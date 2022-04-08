@@ -55,9 +55,10 @@ function showFile(){
     fileReader.onload = ()=>{
       let fileURL = fileReader.result; //passing user file source in fileURL variable
         // UNCOMMENT THIS BELOW LINE. I GOT AN ERROR WHILE UPLOADING THIS POST SO I COMMENTED IT
-      let imgTag = `<img src="${fileURL}" alt="Mobirise">`; //creating an img tag and passing user selected file source inside src attribute
-      imagedisplay.innerHTML = imgTag; //adding that created img tag inside dropArea container
+      // let imgTag = `<img src="${fileURL}" alt="Mobirise">`; //creating an img tag and passing user selected file source inside src attribute
+      //imagedisplay.innerHTML = imgTag; //adding that created img tag inside dropArea container
     }
+    
     fileReader.readAsDataURL(file);
   }else{
     alert("This is not an Image File!");
