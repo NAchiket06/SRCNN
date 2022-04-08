@@ -1,12 +1,8 @@
-from tabnanny import filename_only
+#app.py
 from flask import Flask, flash, request, redirect, url_for, render_template
 import urllib.request
 import os
-import cv2
 from werkzeug.utils import secure_filename
-import numpy
-import superRes
-
  
 app = Flask(__name__)
  
@@ -28,25 +24,19 @@ def home():
  
 @app.route('/', methods=['POST'])
 def upload_image():
-
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
-
     file = request.files['file']
-
     if file.filename == '':
         flash('No image selected for uploading')
         return redirect(request.url)
-
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        #print('upload_image filename: ' + filename)
         flash('Image successfully uploaded and displayed below')
-
-        file = superRes.predict(filename)
         return render_template('index.html', filename=filename)
-
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
@@ -57,4 +47,4 @@ def display_image(filename):
     return redirect(url_for('static', filename='uploads/' + filename), code=301)
  
 if __name__ == "__main__":
-    app.run(debug="True")
+    app.run()
