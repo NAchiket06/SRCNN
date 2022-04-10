@@ -59,7 +59,7 @@ def model():
 
 # define necessary image processing functions
 
-def modcrop(img, scale,s):
+def modcrop(img, scale):
     tmpsz = img.shape
     sz = tmpsz[0:2]
     sz = sz - np.mod(sz, scale)
@@ -73,23 +73,15 @@ def shave(image, border):
 
 # define main prediction function
 
-def predict(imageName):
+def predict(filename):
     
-    path = 'static/uploads'
-    for file in os.listdir(path):
-        if(file.endswith(imageName)):
-            image  = file
-
+    degraded = cv2.imread('static/uploads/{}.png'.format(filename))
+    
     # load the srcnn model with weights
     srcnn = model()
-    srcnn.load_weights('3051crop_weight_200.h5')
+    srcnn.load_weights('static/3051crop_weight_200.h5')
     
-    # load the degraded and reference images
-    degraded = image
-    
-    s = 600
-    # preprocess the image with modcrop
-    degraded = modcrop(degraded, 3,s)
+    degraded = modcrop(degraded, 2)
     
     # convert the image to YCrCb - (srcnn trained on Y channel)
     temp = cv2.cvtColor(degraded, cv2.COLOR_BGR2YCrCb)
@@ -114,10 +106,6 @@ def predict(imageName):
     
     # remove border from reference and degraged image
     degraded = shave(degraded.astype(np.uint8), 6)
-    
-    # image quality calculations
 
-    
-    # return images and scores
-    return output
+    cv2.imwrite('static/uploads/{}.png'.format(filename))
 
