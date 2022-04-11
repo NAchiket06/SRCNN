@@ -14,28 +14,6 @@ import numpy as np
 import math
 import os
 
-# define a function for peak signal-to-noise ratio (PSNR)
-def psnr(target, ref):
-         
-    # assume RGB image
-    target_data = target.astype(float)
-    ref_data = ref.astype(float)
-
-    diff = ref_data - target_data
-    diff = diff.flatten('C')
-
-    rmse = math.sqrt(np.mean(diff ** 2.))
-
-    return 20 * math.log10(255. / rmse)
-
-# define function for mean squared error (MSE)
-def mse(target, ref):
-    # the MSE between the two images is the sum of the squared difference between the two images
-    err = np.sum((target.astype('float') - ref.astype('float')) ** 2)
-    err /= float(target.shape[0] * target.shape[1])
-    
-    return err
-
 def model():
     
     # define model type
@@ -75,7 +53,7 @@ def shave(image, border):
 
 def predict(filename):
     
-    degraded = cv2.imread('static/uploads/{}.png'.format(filename))
+    degraded = cv2.imread('static/uploads/{}'.format(filename))
     
     # load the srcnn model with weights
     srcnn = model()
@@ -107,5 +85,5 @@ def predict(filename):
     # remove border from reference and degraged image
     degraded = shave(degraded.astype(np.uint8), 6)
 
-    cv2.imwrite('static/uploads/{}.png'.format(filename))
+    cv2.imwrite('static/resolved/{}'.format('0.png'),output)
 

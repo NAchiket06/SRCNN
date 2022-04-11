@@ -52,7 +52,7 @@
                 </p>
                 {% if filename %}
                     <div>
-                        <img src="{{ url_for('display_image', filename=filename) }}">
+                        <!-- <img src="{{ url_for('display_image', filename=filename) }}"> -->
                     </div>
                 {% endif %}
                 <form method="post" action="/" enctype="multipart/form-data" class="text-center">
@@ -64,6 +64,8 @@
                     <p>
                         <input type="submit" value="Submit" class="btn btn-info">
                     </p>
+                    <image src="{{url_for('static',filename='resolved/0.png')}}" ></image>
+
                 </form>
 
 

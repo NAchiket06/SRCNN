@@ -1,22 +1,19 @@
 #app.py
+from tkinter import Image
+from tkinter.tix import IMAGE
 from flask import Flask, flash, request, redirect, url_for, render_template
 import os
+from matplotlib import image
 from werkzeug.utils import secure_filename
 import superRes
-import cv2
-import numpy
-
 
 app = Flask(__name__)
-
-model = superRes.model()
-model.load_weights('static/3051crop_weight_200.h5')
 
 UPLOAD_FOLDER = 'static/uploads/'
  
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 64 * 1024 * 1024
  
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
  
@@ -30,32 +27,20 @@ def home():
  
 @app.route('/', methods=['POST'])
 def upload_image():
-
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
-
     file = request.files['file']
-
     if file.filename == '':
         flash('No image selected for uploading')
         return redirect(request.url)
-
     if file and allowed_file(file.filename):
-        flash(file.filename)
         filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-        ############### Super Resolve #####################################
-
-        #superRes.predict(file.filename)
-
-        file = cv2.imread('static/uploads/0_2.png')
-
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], '0.png'))
+        name = '0.png'
+        superRes.predict(name)
         flash('Image successfully uploaded and displayed below')
         return render_template('index.html', filename=filename)
-
-
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
