@@ -55,6 +55,13 @@ def predict(filename):
     
     degraded = cv2.imread('static/uploads/{}'.format(filename))
     
+    h, w, _ = degraded.shape
+
+    new_height = h * 2
+    new_width = w * 2
+
+    imageDimensions = (int(new_width),int(new_height)) 
+    degraded = cv2.resize(degraded, imageDimensions, interpolation = cv2.INTER_CUBIC) 
     # load the srcnn model with weights
     srcnn = model()
     srcnn.load_weights('static/3051crop_weight_200.h5')
