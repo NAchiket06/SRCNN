@@ -1,18 +1,11 @@
 from re import S
-import sys
-import keras
 import cv2
 import numpy
-import matplotlib
-import skimage
 from keras.models import Sequential
 from keras.layers import Conv2D
 from tensorflow.keras.optimizers import Adam
-from matplotlib import pyplot as plt
 import cv2
 import numpy as np
-import math
-import os
 
 def model():
     

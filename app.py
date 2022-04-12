@@ -1,9 +1,5 @@
-#app.py
-from tkinter import Image
-from tkinter.tix import IMAGE
 from flask import Flask, flash, request, redirect, url_for, render_template
 import os
-from matplotlib import image
 from werkzeug.utils import secure_filename
 import superRes
 
